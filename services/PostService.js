@@ -44,13 +44,9 @@ service.create = async ({ title, description, image, user }) => {
         message: 'Post not created!',
       };
     }
-  } catch (error) {
-    serviceResponse.success = false;
-    serviceResponse.content = {
-      error: 'Internal Server Error',
-    };
-  } finally {
     return serviceResponse;
+  } catch (error) {
+    throw new Error('Internal Server Error');
   }
 };
 
